@@ -9,9 +9,7 @@ proc unixifyText*(str: string) : string =
     return opt;
 
 proc directoryExists*(dirPath: string) : bool =
-    let dirToCheck = "if test -d "&dirPath.replace("~", "$HOME")&"; then echo 1; fi";
-    var cmdOpt = (execCmdEx dirToCheck)[0];
-    if cmdOpt.find("1") != -1:
+    if (execCmdEx "if test -d "&dirPath.replace("~", "$HOME")&"; then echo 1; fi")[0].find("1") != -1:
         return true;
     else:
         return false;
