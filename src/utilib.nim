@@ -5,7 +5,7 @@ proc unixifyText*(str: string) : string =
     let charsToSwap : array[4, string] = ["\\", "/", "\"", "\'"];
     var opt = str;
     for character in charsToSwap:
-        opt = opt.replace(character, "\92" & character);
+        opt = opt.replace(character, "\\" & character);
     return opt;
 
 proc directoryExists*(dirPath: string) : bool =
