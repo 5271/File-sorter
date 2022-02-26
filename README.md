@@ -18,6 +18,7 @@ Building process is simple. In order to build the program you only need package 
   - Help flag
   - Debug flag
   - Load config profile flag
+  - No output flag
 - 📁 Specifying directory to sort files in
 - 🗂️ Automatic file group's folders creation ✔️
 
