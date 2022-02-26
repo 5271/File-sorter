@@ -6,8 +6,15 @@ import std/os;
 var args = commandLineParams();
 
 var exec = false;
+var forceFlag = false;
+var cleanFlag = false;
 
 if args.find("-f") != -1 or args.find("--force") != -1:
+    forceFlag = true;
+if args.find("-l") != -1 or args.find("--clean") != -1:
+    cleanFlag = true;
+
+if forceFlag or cleanFlag:
     exec = true;
 else:
     stdout.write "Are you sure you want to put all these files in the archive? [Y/N] ";
@@ -58,5 +65,5 @@ if exec:
                 discard execCmd("mv \"" & file.unixifyText() & "\" ~/Archive/Archives");
             else:
                 discard execCmd("mv \"" & file.unixifyText() & "\" ~/Archive/Misc");
-
-    echo "Files sorted successfully";
+    if not cleanFlag:
+        echo "Files sorted successfully";
